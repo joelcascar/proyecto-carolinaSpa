@@ -1,0 +1,88 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+.horario{
+    background-repeat: no-repeat;
+    background-position: center, center bottom;
+    color: v.$blanco;
+
+    @include m.tablet{
+        background-position: center, right top;
+    }
+
+    &__grid{
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        @include m.tablet{
+            grid-template-rows: unset;
+            @include m.grid(2, 5rem);
+        }
+    }
+
+    &__contenido{
+        padding: 5rem 0;
+    }
+
+    &__heading{
+        @include m.heading;
+    }
+    &__texto{
+        font-size: 2.2rem;
+        line-height: 1.8;
+        text-align: center;
+    }
+}
+
+.tabla{
+    width: 100%;
+    border: .5rem solid v.$secundario;
+    text-align: center;
+    border-collapse: collapse;
+    &__thead{
+        background-color: v.$secundario;
+    }
+
+    &__tr{
+        &:hover{
+            background-color: darken(v.$primario, 10%);
+        }
+    }
+    &__th{
+        padding: 2rem;
+    }
+
+    &__td{
+        padding: 1rem;
+        font-size: 2.2rem;
+    }
+}
+
+.notavif{
+    &.notwebp{
+        .horario{
+            background-image: linear-gradient(to bottom, v.$primario 0%, v.$primario 50%, transparent 50%, transparent 100%),url(../img/bg_horarios.jpg);
+    
+            @include m.tablet{
+                background-image: linear-gradient(to right, v.$primario 0%, v.$primario 50%, transparent 50%, transparent 100%),url(../img/bg_horarios.jpg);
+            }
+        }
+    }
+}
+
+.webp{
+    .horario{
+        background-image: linear-gradient(to bottom, v.$primario 0%, v.$primario 50%, transparent 50%, transparent 100%),url(../img/bg_horarios.webp);
+         @include m.tablet{
+            background-image: linear-gradient(to right, v.$primario 0%, v.$primario 50%, transparent 50%, transparent 100%),url(../img/bg_horarios.webp);
+        }
+    }
+}
+
+.avif{
+    .horario{
+        background-image: linear-gradient(to bottom, v.$primario 0%, v.$primario 50%, transparent 50%, transparent 100%),url(../img/bg_horarios.avif);
+        @include m.tablet{
+            background-image: linear-gradient(to right, v.$primario 0%, v.$primario 50%, transparent 50%, transparent 100%),url(../img/bg_horarios.avif);
+        }
+    }
+}
