@@ -2,7 +2,6 @@
 @use "base/mixins" as m;
 
 .cita{
-    background-image: url(../img/bg_citas.jpg);
     background-position: center center;
     background-size: cover;
     background-attachment: fixed;
@@ -24,5 +23,24 @@
     &__enlace{
         @include m.boton(v.$primario, v.$blanco);
         padding: 2rem 10rem;
+    }
+}
+
+.notavif{
+    &.notwebp{
+        .cita{
+            background-image: url(../img/bg_citas.jpg);
+        }
+    }
+}
+
+.webp{
+    .cita{
+        background-image: url(../img/bg_citas.webp);
+    }
+}
+.avif{
+    .cita{
+        background-image: url(../img/bg_citas.avif);
     }
 }
