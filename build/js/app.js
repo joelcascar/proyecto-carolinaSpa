@@ -1,66 +1,35 @@
-(function (document) {
-  var checkCount = 0,
-    formatFound = false;
+// Primer ejemplo de slide
 
-  function setHTMLClass(height, className) {
-    checkCount++;
-    if (height == 2) {
-      formatFound = true;
-      document.documentElement.className += " " + className;
-    } else {
-      document.documentElement.className += " not" + className;
-      if (checkCount == 4 && !formatFound) {
-        if (
-          document.implementation.hasFeature(
-            "http://www.w3.org/TR/SVG11/feature#Image",
-            "1.1"
-          )
-        ) {
-          document.documentElement.className += " svg";
-        } else {
-          document.documentElement.className += " notsvg png";
-        }
-      }
-    }
-  }
+/* window.swiper = new Swiper({
+    el: '.slider__contenedor', // va a ser la clase padre que contendra los elementos
+    slideClass: 'slider__slide', // va a ser la clase de los elementos hijos
+    createElements: true, // nos genera el resto del código HTML
+    autoplay:{ // para que arranque el slide de imagenes
+        delay: 5000 // el tiempo que tardará en inicializar el carrusel en segundos, cada 1000 es un segundo
+    },
+    loop: true, // Cuando se acabe el carrusel de imagenes vuelve a empezar en la primera imagen
+    //spaceBetween: 20 // sirve para separar la imagenes y el número se convertirá en px
+    pagination: true, // Sirve para poner paginación, me mostrará la cantida de imagenes con puntos.
+    navigation: true // Sirve para colocar las flechas de navegación.
+}); */
 
-  var JXL = new Image();
-  JXL.onload = JXL.onerror = function () {
-    setHTMLClass(JXL.height, "jxl");
-  };
-  JXL.src =
-    "data:image/jxl;base64,/woIELASCAgQAFwASxLFgkWAHL0xqnCBCV0qDp901Te/5QM=";
+// Slide con efecto de cubo
 
-  var AVIF = new Image();
-  AVIF.onload = AVIF.onerror = function () {
-    setHTMLClass(AVIF.height, "avif");
-  };
-  AVIF.src =
-    "data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgANogQEAwgMg8f8D///8WfhwB8+ErK42A=";
-
-  var WebP = new Image();
-  WebP.onload = WebP.onerror = function () {
-    setHTMLClass(WebP.height, "webp");
-  };
-  WebP.src =
-    "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
-
-  var JPX = new Image();
-  JPX.onload = JPX.onerror = function () {
-    setHTMLClass(JPX.height, "jpx");
-  };
-  JPX.src =
-    "data:image/vnd.ms-photo;base64,SUm8AQgAAAAFAAG8AQAQAAAASgAAAIC8BAABAAAAAQAAAIG8BAABAAAAAgAAAMC8BAABAAAAWgAAAMG8BAABAAAARgAAAAAAAAAkw91vA07+S7GFPXd2jckQV01QSE9UTwAZAMFxAAAAATAAoAAKAACgAAAQgCAIAAAEb/8AAQAAAQDCPwCAAAAAAAAAAAAAAAAAjkI/AIAAAAAAAAABIAA=";
-
-  var JP2 = new Image();
-  JP2.onload = JP2.onerror = function () {
-    setHTMLClass(JP2.height, "jp2");
-  };
-  JP2.src =
-    "data:image/jp2;base64,/0//UQAyAAAAAAABAAAAAgAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAEBwEBBwEBBwEBBwEB/1IADAAAAAEAAAQEAAH/XAAEQED/ZAAlAAFDcmVhdGVkIGJ5IE9wZW5KUEVHIHZlcnNpb24gMi4wLjD/kAAKAAAAAABYAAH/UwAJAQAABAQAAf9dAAUBQED/UwAJAgAABAQAAf9dAAUCQED/UwAJAwAABAQAAf9dAAUDQED/k8+kEAGvz6QQAa/PpBABr994EAk//9k=";
-})(
-  (window.sandboxApi &&
-    window.sandboxApi.parentWindow &&
-    window.sandboxApi.parentWindow.document) ||
-    document
-);
+var swiper = new Swiper(".mySwiper", {
+    effect: "cube",
+    grabCursor: true,
+    cubeEffect: {
+    shadow: true,
+    slideShadows: true,
+    shadowOffset: 20,
+    shadowScale: 0.94,
+    },
+    pagination: {
+    el: ".swiper-pagination",
+    },
+    autoplay:{
+        delay: 5000
+    },
+    loop: true,
+    speed: 1600
+});
